@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.choice {
+  @apply bg-secondary h-14 rounded-xl flex items-center group-hover:bg-primary transition-all duration-100;
+}
+.button {
+  @apply bg-primary px-8 py-4 rounded-2xl text-white text-lg hover:bg-dark transition-all duration-75;
+}

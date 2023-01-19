@@ -7,7 +7,7 @@ export const questions = defineType({
   fields: [
     defineField({
       title: "Tepkime",
-      name: "equation",
+      name: "equations",
       type: "array",
       of: [{ type: "latex" }],
       validation: rule => rule.required(),
