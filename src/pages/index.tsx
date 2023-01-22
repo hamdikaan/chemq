@@ -1,6 +1,8 @@
 import { Inter } from "@next/font/google";
 import { useEffect, useState } from "react";
 import Question from "@/components/Question";
+import Timer from "@/components/Timer";
+import Counter from "@/components/Counter";
 import { TQuestion } from "@/types";
 import { client } from "../../lib/sanity";
 
@@ -21,15 +23,21 @@ export default function Home({ data }: Props) {
   }
 
   return (
-    <div className="flex items-center justify-center w-screen h-screen bg-secondary flex-col">
-      <Question {...data[c]} s={s} setS={setS} />
-      <div className="w-[45%] h-[7.2%] flex justify-between m-4">
-        <button className="button" onClick={() => change(true)}>
-          Önceki
-        </button>
-        <button className="button" onClick={() => change(false)}>
-          Sonraki
-        </button>
+    <div className="flex items-center justify-center w-screen h-screen bg-secondary">
+      <div className="w-[40%] h-[60%]">
+        <Question {...data[c]} s={s} setS={setS} />
+        <div className="w-full h-[10%] flex justify-between mt-4">
+          <button className="button" onClick={() => change(true)}>
+            Önceki
+          </button>
+          <button className="button" onClick={() => change(false)}>
+            Sonraki
+          </button>
+        </div>
+      </div>
+      <div className="ml-16 w-[15%] h-[60%] flex justify-between flex-col">
+        <Timer />
+        <Counter />
       </div>
     </div>
   );

@@ -17,34 +17,34 @@ const Question = (props: Props) => {
   const prefix = ["A", "B", "C", "D", "E"];
 
   return (
-    <div className="w-[45%] h-3/5 bg-light rounded-3xl p-6">
-      <div className="h-2/5 flex justify-center flex-col">
+    <div className="w-full h-full bg-light rounded-3xl p-6">
+      <div className="h-2/5 flex flex-col">
         {props.equations.map(v => (
           <span
             key={v._key}
-            className="flex items-center justify-center text-xl mb-6"
+            className="flex items-center justify-center text-xl mb-5"
             dangerouslySetInnerHTML={{
               __html: katex.renderToString(v.body),
             }}
           ></span>
         ))}
-        <div className={inter.className + "h-1/5 text-xl"}>
+        <div className={inter.className + "p-4 text-xl"}>
           <PortableText value={props.question} />
         </div>
       </div>
       <div className="h-3/5">
         {props.choices.map((v, i) => {
+          let color = "";
+          if (props.s === i && props.s === props.answer - 1) {
+            color = "#4b7364";
+          } else if (props.s === i && props.s !== props.answer - 1) {
+            color = "#bc4d3e";
+          } else if (props.s !== undefined && i === props.answer - 1) {
+            color = "#4b7364";
+          }
+
           const style = {
-            backgroundColor:
-              (props.s === i && props.s === props.answer - 1
-                ? "#4b7364"
-                : "") ||
-              (props.s === i && props.s !== props.answer - 1
-                ? "#bc4d3e"
-                : "") ||
-              (props.s !== undefined && i === props.answer - 1
-                ? "#4b7364"
-                : ""),
+            backgroundColor: color,
           };
 
           return (
